@@ -25,4 +25,49 @@ abstract contract BenqiDecoderAndSanitizer is BaseDecoderAndSanitizer {
         // No addresses to sanitize
         return addressesFound;
     }
+
+    function borrow(uint256 /*borrowAmount*/ )
+        external
+        pure
+        virtual
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        return addressesFound;
+    }
+
+    function repayBorrow(uint256 /*repayAmount*/ )
+        external
+        pure
+        virtual
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        return addressesFound;
+    }
+
+    //============================== Comptroller ===============================
+
+    function enterMarkets(address[] calldata markets)
+        external
+        pure
+        virtual
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        uint256 marketsLength = markets.length;
+        for (uint256 i; i < marketsLength; ++i) {
+            addressesFound = abi.encodePacked(addressesFound, markets[i]);
+        }
+    }
+
+    function exitMarket(address market)
+        external
+        pure
+        virtual
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        return abi.encodePacked(market);
+    }
 }
