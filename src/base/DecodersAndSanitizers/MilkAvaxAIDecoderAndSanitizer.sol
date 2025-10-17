@@ -2,9 +2,10 @@
 pragma solidity 0.8.21;
 
 import {BaseDecoderAndSanitizer, DecoderCustomTypes} from "src/base/DecodersAndSanitizers/BaseDecoderAndSanitizer.sol";
-import {NativeWrapperDecoderAndSanitizer} from
-    "src/base/DecodersAndSanitizers/Protocols/NativeWrapperDecoderAndSanitizer.sol";
 import {AaveV3DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/AaveV3DecoderAndSanitizer.sol";
+import {AesyxBorrowerOperations} from "src/base/DecodersAndSanitizers/Protocols/aesyx/AesyxBorrowerOperations.sol";
+import {AesyxWrapper} from "src/base/DecodersAndSanitizers/Protocols/aesyx/AesyxWrapper.sol";
+import {BenqiDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/BenqiDecoderAndSanitizer.sol";
 import {BlackholeDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/BlackholeDecoderAndSanitizer.sol";
 import {DeltaPrimeDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/DeltaPrimeDecoderAndSanitizer.sol";
@@ -17,6 +18,8 @@ import {LFJLBPairDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/LFJLBPairDecoderAndSanitizer.sol";
 import {MasterChefDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MasterChefDecoderAndSanitizer.sol";
 import {MerklDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MerklDecoderAndSanitizer.sol";
+import {NativeWrapperDecoderAndSanitizer} from
+    "src/base/DecodersAndSanitizers/Protocols/NativeWrapperDecoderAndSanitizer.sol";
 import {SiloIncentivesControllerDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/SiloIncentivesControllerDecoderAndSanitizer.sol";
 import {StableJackDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/StableJackDecoderAndSanitizer.sol";
@@ -29,8 +32,10 @@ import {YakSimpleSwapDecoderAndSanitizer} from
 
 contract MilkAvaxAIDecoderAndSanitizer is
     BaseDecoderAndSanitizer,
-    NativeWrapperDecoderAndSanitizer,
     AaveV3DecoderAndSanitizer,
+    AesyxBorrowerOperations,
+    AesyxWrapper,
+    BenqiDecoderAndSanitizer,
     BlackholeDecoderAndSanitizer,
     DeltaPrimeDecoderAndSanitizer,
     ERC4626DecoderAndSanitizer,
@@ -39,6 +44,7 @@ contract MilkAvaxAIDecoderAndSanitizer is
     LFJLBPairDecoderAndSanitizer,
     MasterChefDecoderAndSanitizer,
     MerklDecoderAndSanitizer,
+    NativeWrapperDecoderAndSanitizer,
     SiloIncentivesControllerDecoderAndSanitizer,
     StableJackDecoderAndSanitizer,
     YakMilkDecoderAndSanitizer,
@@ -66,7 +72,12 @@ contract MilkAvaxAIDecoderAndSanitizer is
     function withdraw(uint256)
         external
         pure
-        override(NativeWrapperDecoderAndSanitizer, YakStrategyDecoderAndSanitizer, BlackholeDecoderAndSanitizer)
+        override(
+            AesyxWrapper,
+            BlackholeDecoderAndSanitizer,
+            NativeWrapperDecoderAndSanitizer,
+            YakStrategyDecoderAndSanitizer
+        )
         returns (bytes memory addressesFound)
     {
         // No addresses to sanitize
