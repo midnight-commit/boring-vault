@@ -16,6 +16,17 @@ abstract contract BenqiDecoderAndSanitizer is BaseDecoderAndSanitizer {
         return addressesFound;
     }
 
+    // Payable variant for mint
+    function mint()
+        external
+        pure
+        virtual
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        return addressesFound;
+    }
+
     function redeemUnderlying(uint256 /*amount*/ )
         external
         pure
@@ -37,6 +48,17 @@ abstract contract BenqiDecoderAndSanitizer is BaseDecoderAndSanitizer {
     }
 
     function repayBorrow(uint256 /*repayAmount*/ )
+        external
+        pure
+        virtual
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        return addressesFound;
+    }
+
+    // Payable variant for repayBorrow
+    function repayBorrow()
         external
         pure
         virtual
