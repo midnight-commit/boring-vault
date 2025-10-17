@@ -8,6 +8,12 @@ import {BlackholeDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/BlackholeDecoderAndSanitizer.sol";
 import {DeltaPrimeDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/DeltaPrimeDecoderAndSanitizer.sol";
 import {ERC4626DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/ERC4626DecoderAndSanitizer.sol";
+import {LFJLBRouterDecoderAndSanitizer} from
+    "src/base/DecodersAndSanitizers/Protocols/LFJLBRouterDecoderAndSanitizer.sol";
+import {LFJLBHooksSimpleRewarderDecoderAndSanitizer} from
+    "src/base/DecodersAndSanitizers/Protocols/LFJLBHooksSimpleRewarderDecoderAndSanitizer.sol";
+import {LFJLBPairDecoderAndSanitizer} from
+    "src/base/DecodersAndSanitizers/Protocols/LFJLBPairDecoderAndSanitizer.sol";
 import {MasterChefDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MasterChefDecoderAndSanitizer.sol";
 import {MerklDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MerklDecoderAndSanitizer.sol";
 import {SiloIncentivesControllerDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/SiloIncentivesControllerDecoderAndSanitizer.sol";
@@ -23,6 +29,9 @@ contract MilkUSDAIDecoderAndSanitizer is
     BlackholeDecoderAndSanitizer,
     DeltaPrimeDecoderAndSanitizer,
     ERC4626DecoderAndSanitizer,
+    LFJLBRouterDecoderAndSanitizer,
+    LFJLBHooksSimpleRewarderDecoderAndSanitizer,
+    LFJLBPairDecoderAndSanitizer,
     MasterChefDecoderAndSanitizer,
     MerklDecoderAndSanitizer,
     SiloIncentivesControllerDecoderAndSanitizer,
@@ -44,68 +53,10 @@ contract MilkUSDAIDecoderAndSanitizer is
         return addressesFound;
     }
 
-    function deposit(uint256, address receiver)
-        external
-        pure
-        override(ERC4626DecoderAndSanitizer)
-        returns (bytes memory addressesFound)
-    {
-        addressesFound = abi.encodePacked(receiver);
-    }
-
-    function mint(uint256)
-        external
-        pure
-        override(BenqiDecoderAndSanitizer)
-        returns (bytes memory addressesFound)
-    {
-        // No addresses to sanitize
-        return addressesFound;
-    }
-
-    function redeemUnderlying(uint256)
-        external
-        pure
-        override(BenqiDecoderAndSanitizer)
-        returns (bytes memory addressesFound)
-    {
-        // No addresses to sanitize
-        return addressesFound;
-    }
-
     function withdraw(uint256)
         external
         pure
         override(BlackholeDecoderAndSanitizer, YakStrategyDecoderAndSanitizer)
-        returns (bytes memory addressesFound)
-    {
-        // No addresses to sanitize
-        return addressesFound;
-    }
-
-    function withdraw(uint256, address receiver, address owner)
-        external
-        pure
-        override(ERC4626DecoderAndSanitizer)
-        returns (bytes memory addressesFound)
-    {
-        addressesFound = abi.encodePacked(receiver, owner);
-    }
-
-    function createWithdrawalIntent(uint256) 
-        external 
-        pure 
-        override(DeltaPrimeDecoderAndSanitizer)
-        returns (bytes memory addressesFound)
-    {
-        // No addresses to sanitize
-        return addressesFound;
-    }
-
-    function withdraw(uint256,uint256[] calldata) 
-        external 
-        pure 
-        override(DeltaPrimeDecoderAndSanitizer)
         returns (bytes memory addressesFound)
     {
         // No addresses to sanitize
