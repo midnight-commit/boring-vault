@@ -5,23 +5,6 @@ import {IBlackholeNonFungiblePositionManager} from "src/interfaces/IBlackholeNon
 import {BaseDecoderAndSanitizer, DecoderCustomTypes} from "src/base/DecodersAndSanitizers/BaseDecoderAndSanitizer.sol";
 
 abstract contract BlackholeDecoderAndSanitizer is BaseDecoderAndSanitizer {
-    //============================== ERRORS ===============================
-
-    error BlackholeDecoderAndSanitizer__BadTokenId();
-
-    //============================== IMMUTABLES ===============================
-
-    /**
-     * @notice The networks nonfungible position manager.
-     * @notice Avalanche: 0x3fED017EC0f5517Cdf2E8a9a4156c64d74252146
-     * @notice
-     */
-    IBlackholeNonFungiblePositionManager internal immutable blackholeNonFungiblePositionManager;
-
-    constructor(address _blackholeNonFungiblePositionManager) {
-        blackholeNonFungiblePositionManager = IBlackholeNonFungiblePositionManager(_blackholeNonFungiblePositionManager);
-    }
-
     //============================== BLACKHOLE CL ===============================
 
     function mint(DecoderCustomTypes.BlackholeMintParams calldata params)
@@ -34,36 +17,27 @@ abstract contract BlackholeDecoderAndSanitizer is BaseDecoderAndSanitizer {
         addressesFound = abi.encodePacked(params.token0, params.token1, params.deployer, params.recipient);
     }
 
-    function increaseLiquidity(DecoderCustomTypes.IncreaseLiquidityParams calldata params)
+    function increaseLiquidity(DecoderCustomTypes.IncreaseLiquidityParams calldata /*params*/)
         external
         view
         virtual
         returns (bytes memory addressesFound)
     {
-        // Sanitize raw data
-        if (blackholeNonFungiblePositionManager.ownerOf(params.tokenId) != boringVault) {
-            revert BlackholeDecoderAndSanitizer__BadTokenId();
-        }
-        // Extract addresses from BlackholeNonFungiblePositionManager.positions(params.tokenId).
-        (, address operator, address token0, address token1, address deployer,,,,,,,) =
-            blackholeNonFungiblePositionManager.positions(params.tokenId);
-        addressesFound = abi.encodePacked(operator, token0, token1, deployer);
+        // NOTE ownerOf check is done in PositionManager contract
+        
+        // Nothing to sanitize or return
+        return addressesFound;
     }
 
-    function decreaseLiquidity(DecoderCustomTypes.DecreaseLiquidityParams calldata params)
+    function decreaseLiquidity(DecoderCustomTypes.DecreaseLiquidityParams calldata /*params*/)
         external
         view
         virtual
         returns (bytes memory addressesFound)
     {
-        // Sanitize raw data
-        // NOTE ownerOf check is done in PositionManager contract as well, but it is added here
-        // just for completeness.
-        if (blackholeNonFungiblePositionManager.ownerOf(params.tokenId) != boringVault) {
-            revert BlackholeDecoderAndSanitizer__BadTokenId();
-        }
+        // NOTE ownerOf check is done in PositionManager contract
 
-        // No addresses in data
+        // Nothing to sanitize or return
         return addressesFound;
     }
 
@@ -73,12 +47,7 @@ abstract contract BlackholeDecoderAndSanitizer is BaseDecoderAndSanitizer {
         virtual
         returns (bytes memory addressesFound)
     {
-        // Sanitize raw data
-        // NOTE ownerOf check is done in PositionManager contract as well, but it is added here
-        // just for completeness.
-        if (blackholeNonFungiblePositionManager.ownerOf(params.tokenId) != boringVault) {
-            revert BlackholeDecoderAndSanitizer__BadTokenId();
-        }
+        // NOTE ownerOf check is done in PositionManager contract
 
         // Return addresses found
         addressesFound = abi.encodePacked(params.recipient);
@@ -103,8 +72,6 @@ abstract contract BlackholeDecoderAndSanitizer is BaseDecoderAndSanitizer {
         address to,
         uint256 /*deadline*/
     ) external pure returns (bytes memory addressesFound) {
-        // Nothing to sanitize
-        // Return addresses found
         addressesFound = abi.encodePacked(tokenA, tokenB, to);
     }
 
@@ -118,8 +85,6 @@ abstract contract BlackholeDecoderAndSanitizer is BaseDecoderAndSanitizer {
         address to,
         uint256 /*deadline*/
     ) external pure returns (bytes memory addressesFound) {
-        // Nothing to sanitize
-        // Return addresses found
         addressesFound = abi.encodePacked(tokenA, tokenB, to);
     }
 

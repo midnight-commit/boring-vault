@@ -6,26 +6,19 @@ import {AaveV3DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocol
 import {AesyxBorrowerOperations} from "src/base/DecodersAndSanitizers/Protocols/aesyx/AesyxBorrowerOperations.sol";
 import {AesyxWrapper} from "src/base/DecodersAndSanitizers/Protocols/aesyx/AesyxWrapper.sol";
 import {BenqiDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/BenqiDecoderAndSanitizer.sol";
-import {BlackholeDecoderAndSanitizer} from
-    "src/base/DecodersAndSanitizers/Protocols/BlackholeDecoderAndSanitizer.sol";
+import {BlackholeDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/BlackholeDecoderAndSanitizer.sol";
 import {ERC4626DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/ERC4626DecoderAndSanitizer.sol";
-import {LFJLBRouterDecoderAndSanitizer} from
-    "src/base/DecodersAndSanitizers/Protocols/LFJLBRouterDecoderAndSanitizer.sol";
-import {LFJLBHooksSimpleRewarderDecoderAndSanitizer} from
-    "src/base/DecodersAndSanitizers/Protocols/LFJLBHooksSimpleRewarderDecoderAndSanitizer.sol";
-import {LFJLBPairDecoderAndSanitizer} from
-    "src/base/DecodersAndSanitizers/Protocols/LFJLBPairDecoderAndSanitizer.sol";
+import {LFJLBRouterDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/LFJLBRouterDecoderAndSanitizer.sol";
+import {LFJLBHooksSimpleRewarderDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/LFJLBHooksSimpleRewarderDecoderAndSanitizer.sol";
+import {LFJLBPairDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/LFJLBPairDecoderAndSanitizer.sol";
 import {MasterChefDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MasterChefDecoderAndSanitizer.sol";
 import {MerklDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MerklDecoderAndSanitizer.sol";
-import {NativeWrapperDecoderAndSanitizer} from
-    "src/base/DecodersAndSanitizers/Protocols/NativeWrapperDecoderAndSanitizer.sol";
+import {NativeWrapperDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/NativeWrapperDecoderAndSanitizer.sol";
+import {RamsesV3DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/RamsesV3DecoderAndSanitizer.sol";
 import {SiloIncentivesControllerDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/SiloIncentivesControllerDecoderAndSanitizer.sol";
-import {YakMilkDecoderAndSanitizer} from
-    "src/base/DecodersAndSanitizers/Protocols/YakMilkDecoderAndSanitizer.sol";
-import {YakStrategyDecoderAndSanitizer} from
-    "src/base/DecodersAndSanitizers/Protocols/YakStrategyDecoderAndSanitizer.sol";
-import {YakSimpleSwapDecoderAndSanitizer} from
-    "src/base/DecodersAndSanitizers/Protocols/YakSimpleSwapDecoderAndSanitizer.sol";
+import {YakMilkDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/YakMilkDecoderAndSanitizer.sol";
+import {YakStrategyDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/YakStrategyDecoderAndSanitizer.sol";
+import {YakSimpleSwapDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/YakSimpleSwapDecoderAndSanitizer.sol";
 
 contract MilkBTCAIDecoderAndSanitizer is
     BaseDecoderAndSanitizer,
@@ -41,29 +34,32 @@ contract MilkBTCAIDecoderAndSanitizer is
     MasterChefDecoderAndSanitizer,
     MerklDecoderAndSanitizer,
     NativeWrapperDecoderAndSanitizer,
+    RamsesV3DecoderAndSanitizer,
     SiloIncentivesControllerDecoderAndSanitizer,
     YakMilkDecoderAndSanitizer,
     YakStrategyDecoderAndSanitizer,
     YakSimpleSwapDecoderAndSanitizer
 {
-    constructor(address _boringVault, address _blackholeNonFungiblePositionManager) 
-        BaseDecoderAndSanitizer(_boringVault)
-        BlackholeDecoderAndSanitizer(_blackholeNonFungiblePositionManager)
-    {}
+    constructor(address _boringVault) BaseDecoderAndSanitizer(_boringVault) {}
 
     function deposit()
         external
         pure
-        override(NativeWrapperDecoderAndSanitizer, YakStrategyDecoderAndSanitizer)
+        override(
+            NativeWrapperDecoderAndSanitizer,
+            YakStrategyDecoderAndSanitizer
+        )
         returns (bytes memory addressesFound)
     {
         // No addresses to sanitize
         return addressesFound;
     }
 
-    function deposit(uint256) 
-        external 
-        pure 
+    function deposit(
+        uint256
+    )
+        external
+        pure
         override(BlackholeDecoderAndSanitizer, YakStrategyDecoderAndSanitizer)
         returns (bytes memory addressesFound)
     {
@@ -71,15 +67,64 @@ contract MilkBTCAIDecoderAndSanitizer is
         return addressesFound;
     }
 
-    function withdraw(uint256)
+    function withdraw(
+        uint256
+    )
         external
         pure
         override(
             AesyxWrapper,
-            BlackholeDecoderAndSanitizer, 
-            NativeWrapperDecoderAndSanitizer, 
+            BlackholeDecoderAndSanitizer,
+            NativeWrapperDecoderAndSanitizer,
             YakStrategyDecoderAndSanitizer
         )
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        return addressesFound;
+    }
+
+    function burn(
+        uint256
+    )
+        external
+        pure
+        override(BlackholeDecoderAndSanitizer, RamsesV3DecoderAndSanitizer)
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        return addressesFound;
+    }
+
+    function collect(
+        DecoderCustomTypes.CollectParams calldata params
+    )
+        external
+        pure
+        override(BlackholeDecoderAndSanitizer, RamsesV3DecoderAndSanitizer)
+        returns (bytes memory addressesFound)
+    {
+        addressesFound = abi.encodePacked(params.recipient);
+    }
+
+    function increaseLiquidity(
+        DecoderCustomTypes.IncreaseLiquidityParams calldata /*params*/
+    )
+        external
+        pure
+        override(BlackholeDecoderAndSanitizer, RamsesV3DecoderAndSanitizer)
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        return addressesFound;
+    }
+
+    function decreaseLiquidity(
+        DecoderCustomTypes.DecreaseLiquidityParams calldata /*params*/
+    )
+        external
+        pure
+        override(BlackholeDecoderAndSanitizer, RamsesV3DecoderAndSanitizer)
         returns (bytes memory addressesFound)
     {
         // No addresses to sanitize

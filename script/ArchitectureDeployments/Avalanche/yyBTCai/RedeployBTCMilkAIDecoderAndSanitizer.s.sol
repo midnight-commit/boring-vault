@@ -13,7 +13,6 @@ import "forge-std/Script.sol";
  */
 contract RedeployBTCMilkAIDecoderAndSanitizer is Script, AvalancheAddresses {
     address public boringVault = 0x0FB51627a4D9E01B24C427BB62Ed8d5C9018f8F6;
-    address public blackholeNonFungiblePositionManager = 0x3fED017EC0f5517Cdf2E8a9a4156c64d74252146;
 
     function setUp() external {
         vm.createSelectFork("avalanche");
@@ -22,7 +21,7 @@ contract RedeployBTCMilkAIDecoderAndSanitizer is Script, AvalancheAddresses {
     function run() external {
         vm.startBroadcast();
 
-        new MilkBTCAIDecoderAndSanitizer(boringVault, blackholeNonFungiblePositionManager);
+        new MilkBTCAIDecoderAndSanitizer(boringVault);
 
         vm.stopBroadcast();
     }

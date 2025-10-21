@@ -5,26 +5,6 @@ import {IRamsesV3PositionManager} from "src/interfaces/IRamsesV3PositionManager.
 import {BaseDecoderAndSanitizer, DecoderCustomTypes} from "src/base/DecodersAndSanitizers/BaseDecoderAndSanitizer.sol";
 
 abstract contract RamsesV3DecoderAndSanitizer is BaseDecoderAndSanitizer {
-    //============================== ERRORS ===============================
-
-    error RamsesV3DecoderAndSanitizer__BadTokenId();
-
-    //============================== IMMUTABLES ===============================
-
-    /**
-     * @notice The networks Ramses nonfungible position manager.
-     * @notice Avalanche 0x0B4478e810D48B5882D4019D435A2f864Bab4F39
-     * @notice
-     */
-    IRamsesV3PositionManager
-        internal immutable ramsesNonFungiblePositionManager;
-
-    constructor(address _ramsesNonFungiblePositionManager) {
-        ramsesNonFungiblePositionManager = IRamsesV3PositionManager(
-            _ramsesNonFungiblePositionManager
-        );
-    }
-
     //============================== RAMSES V3 ===============================
 
     function mint(
@@ -39,60 +19,28 @@ abstract contract RamsesV3DecoderAndSanitizer is BaseDecoderAndSanitizer {
     }
 
     function increaseLiquidity(
-        DecoderCustomTypes.IncreaseLiquidityParams calldata params
+        DecoderCustomTypes.IncreaseLiquidityParams calldata /*params*/
     ) external view virtual returns (bytes memory addressesFound) {
-        // Sanitize raw data
-        // NOTE ownerOf check is done in PositionManager contract as well, but it is added here
-        // just for completeness.
-        if (
-            ramsesNonFungiblePositionManager.ownerOf(params.tokenId) !=
-            boringVault
-        ) {
-            revert RamsesV3DecoderAndSanitizer__BadTokenId();
-        }
-        // Extract addresses from ramsesNonFungiblePositionManager.positions(params.tokenId).
-        (address token0,address token1,,,,,,,,) = ramsesNonFungiblePositionManager.positions(params.tokenId);
-        addressesFound = abi.encodePacked(token0, token1);
+        // Nothing to sanitize or return
+        return addressesFound;
     }
 
     function decreaseLiquidity(
-        DecoderCustomTypes.DecreaseLiquidityParams calldata params
+        DecoderCustomTypes.DecreaseLiquidityParams calldata /*params*/
     ) external view virtual returns (bytes memory addressesFound) {
-        // Sanitize raw data
-        // NOTE ownerOf check is done in PositionManager contract as well, but it is added here
-        // just for completeness.
-        if (
-            ramsesNonFungiblePositionManager.ownerOf(params.tokenId) !=
-            boringVault
-        ) {
-            revert RamsesV3DecoderAndSanitizer__BadTokenId();
-        }
-
-        // No addresses in data
+        // Nothing to sanitize or return
         return addressesFound;
     }
 
     function collect(
         DecoderCustomTypes.CollectParams calldata params
     ) external view virtual returns (bytes memory addressesFound) {
-        // Sanitize raw data
-        // NOTE ownerOf check is done in PositionManager contract as well, but it is added here
-        // just for completeness.
-        if (
-            ramsesNonFungiblePositionManager.ownerOf(params.tokenId) !=
-            boringVault
-        ) {
-            revert RamsesV3DecoderAndSanitizer__BadTokenId();
-        }
-
-        // Return addresses found
         addressesFound = abi.encodePacked(params.recipient);
     }
 
     function burn(
         uint256 /*tokenId*/
     ) external pure virtual returns (bytes memory addressesFound) {
-        // positionManager.burn(tokenId) will verify that the tokenId has no liquidity, and no tokens owed.
         // Nothing to sanitize or return
         return addressesFound;
     }

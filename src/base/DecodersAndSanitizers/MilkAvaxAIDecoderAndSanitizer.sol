@@ -52,11 +52,9 @@ contract MilkAvaxAIDecoderAndSanitizer is
     YakSimpleSwapDecoderAndSanitizer
 {
     constructor(
-        address _boringVault,
-        address _blackholeNonFungiblePositionManager
+        address _boringVault
     ) 
         BaseDecoderAndSanitizer(_boringVault)
-        BlackholeDecoderAndSanitizer(_blackholeNonFungiblePositionManager)
     {}
 
     function deposit()

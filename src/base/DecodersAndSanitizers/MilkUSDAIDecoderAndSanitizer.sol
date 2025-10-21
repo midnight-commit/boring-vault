@@ -38,9 +38,8 @@ contract MilkUSDAIDecoderAndSanitizer is
     YakStrategyDecoderAndSanitizer,
     YakSimpleSwapDecoderAndSanitizer
 {
-    constructor(address _boringVault, address _blackholeNonFungiblePositionManager) 
+    constructor(address _boringVault) 
         BaseDecoderAndSanitizer(_boringVault)
-        BlackholeDecoderAndSanitizer(_blackholeNonFungiblePositionManager)
     {}
 
     function deposit(uint256) 
