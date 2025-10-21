@@ -76,7 +76,6 @@ abstract contract BenqiDecoderAndSanitizer is BaseDecoderAndSanitizer {
         virtual
         returns (bytes memory addressesFound)
     {
-        // No addresses to sanitize
         uint256 marketsLength = markets.length;
         for (uint256 i; i < marketsLength; ++i) {
             addressesFound = abi.encodePacked(addressesFound, markets[i]);
@@ -89,7 +88,6 @@ abstract contract BenqiDecoderAndSanitizer is BaseDecoderAndSanitizer {
         virtual
         returns (bytes memory addressesFound)
     {
-        // No addresses to sanitize
         return abi.encodePacked(market);
     }
 }
