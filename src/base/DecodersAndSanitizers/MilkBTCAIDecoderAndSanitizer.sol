@@ -6,6 +6,7 @@ import {AaveV3DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocol
 import {AesyxBorrowerOperations} from "src/base/DecodersAndSanitizers/Protocols/aesyx/AesyxBorrowerOperations.sol";
 import {AesyxStabilityPool} from "src/base/DecodersAndSanitizers/Protocols/aesyx/AesyxStabilityPool.sol";
 import {AesyxWrapper} from "src/base/DecodersAndSanitizers/Protocols/aesyx/AesyxWrapper.sol";
+import {AvantMintingV2} from "src/base/DecodersAndSanitizers/Protocols/avant/AvantMintingV2.sol";
 import {BenqiDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/BenqiDecoderAndSanitizer.sol";
 import {BlackholeDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/BlackholeDecoderAndSanitizer.sol";
 import {ERC4626DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/ERC4626DecoderAndSanitizer.sol";
@@ -27,6 +28,7 @@ contract MilkBTCAIDecoderAndSanitizer is
     AesyxBorrowerOperations,
     AesyxStabilityPool,
     AesyxWrapper,
+    AvantMintingV2,
     BenqiDecoderAndSanitizer,
     BlackholeDecoderAndSanitizer,
     ERC4626DecoderAndSanitizer,
