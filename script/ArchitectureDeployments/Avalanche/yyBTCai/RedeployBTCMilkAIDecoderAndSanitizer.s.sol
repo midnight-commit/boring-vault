@@ -21,7 +21,7 @@ contract RedeployBTCMilkAIDecoderAndSanitizer is Script, AvalancheAddresses {
     function run() external {
         vm.startBroadcast();
 
-        new MilkBTCAIDecoderAndSanitizer(boringVault);
+        new MilkBTCAIDecoderAndSanitizer(boringVault, blackholeNonFungiblePositionManager);
 
         vm.stopBroadcast();
     }

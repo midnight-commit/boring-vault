@@ -21,7 +21,7 @@ contract RedeployUSDMilkAIDecoderAndSanitizer is Script, AvalancheAddresses {
     function run() external {
         vm.startBroadcast();
 
-        new MilkUSDAIDecoderAndSanitizer(boringVault);
+        new MilkUSDAIDecoderAndSanitizer(boringVault, blackholeNonFungiblePositionManager);
 
         vm.stopBroadcast();
     }

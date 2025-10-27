@@ -23,7 +23,7 @@ contract RedeployAVAXMilkAIDecoderAndSanitizer is Script, AvalancheAddresses {
     function run() external {
         vm.startBroadcast();
 
-        new MilkAvaxAIDecoderAndSanitizer(boringVault);
+        new MilkAvaxAIDecoderAndSanitizer(boringVault, blackholeNonFungiblePositionManager);
 
         vm.stopBroadcast();
     }

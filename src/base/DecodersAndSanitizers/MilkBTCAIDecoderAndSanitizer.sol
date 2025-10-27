@@ -46,7 +46,13 @@ contract MilkBTCAIDecoderAndSanitizer is
     YakStrategyDecoderAndSanitizer,
     YakSimpleSwapDecoderAndSanitizer
 {
-    constructor(address _boringVault) BaseDecoderAndSanitizer(_boringVault) {}
+    constructor(
+        address _boringVault,
+        address _blackholeNonFungiblePositionManager
+    )
+        BaseDecoderAndSanitizer(_boringVault)
+        BlackholeDecoderAndSanitizer(_blackholeNonFungiblePositionManager)
+    {}
 
     function deposit()
         external

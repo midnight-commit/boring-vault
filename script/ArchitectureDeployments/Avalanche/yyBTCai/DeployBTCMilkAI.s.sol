@@ -22,7 +22,6 @@ contract DeployBTCMilkAI is DeployArcticArchitecture, AvalancheAddresses {
     uint8 public boringVaultDecimals = 18;
     address public owner = dev0Address;
     address public deployerContractAddress = 0xA541b21cF2994F93127438774e0Bd79F95cb5d59;
-    address public blackholeNonFungiblePositionManager = 0x3fED017EC0f5517Cdf2E8a9a4156c64d74252146;
 
     function setUp() external {
         vm.createSelectFork("avalanche");
