@@ -20,7 +20,7 @@ import {MasterChefDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Prot
 import {MerklDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MerklDecoderAndSanitizer.sol";
 import {NativeWrapperDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/NativeWrapperDecoderAndSanitizer.sol";
-import {SiloIncentivesControllerDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/SiloIncentivesControllerDecoderAndSanitizer.sol";
+import {SiloIncentivesController} from "src/base/DecodersAndSanitizers/Protocols/silo/SiloIncentivesController.sol";
 import {StableJackDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/StableJackDecoderAndSanitizer.sol";
 import {YakMilkDecoderAndSanitizer} from
@@ -45,7 +45,7 @@ contract MilkAvaxAIDecoderAndSanitizer is
     MasterChefDecoderAndSanitizer,
     MerklDecoderAndSanitizer,
     NativeWrapperDecoderAndSanitizer,
-    SiloIncentivesControllerDecoderAndSanitizer,
+    SiloIncentivesController,
     StableJackDecoderAndSanitizer,
     YakMilkDecoderAndSanitizer,
     YakStrategyDecoderAndSanitizer,

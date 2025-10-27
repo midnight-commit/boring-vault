@@ -3,7 +3,7 @@ pragma solidity 0.8.21;
 
 import {BaseDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/BaseDecoderAndSanitizer.sol";
 
-abstract contract SiloIncentivesControllerDecoderAndSanitizer is BaseDecoderAndSanitizer {
+abstract contract SiloIncentivesController is BaseDecoderAndSanitizer {
     //============================== SILO ===============================
 
     function setClaimer(address _user, address _claimer) external pure virtual returns (bytes memory addressesFound) {
