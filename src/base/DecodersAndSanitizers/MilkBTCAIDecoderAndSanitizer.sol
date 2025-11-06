@@ -10,6 +10,7 @@ import {AvantMintingV2} from "src/base/DecodersAndSanitizers/Protocols/avant/Ava
 import {BenqiDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/BenqiDecoderAndSanitizer.sol";
 import {BlackholeDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/BlackholeDecoderAndSanitizer.sol";
 import {ERC4626DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/ERC4626DecoderAndSanitizer.sol";
+import {EthenaWithdrawDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/EthenaWithdrawDecoderAndSanitizer.sol";
 import {LFJLBRouterDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/LFJLBRouterDecoderAndSanitizer.sol";
 import {LFJLBHooksSimpleRewarderDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/LFJLBHooksSimpleRewarderDecoderAndSanitizer.sol";
 import {LFJLBPairDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/LFJLBPairDecoderAndSanitizer.sol";
@@ -18,7 +19,6 @@ import {MerklDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols
 import {NativeWrapperDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/NativeWrapperDecoderAndSanitizer.sol";
 import {RamsesV3DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/RamsesV3DecoderAndSanitizer.sol";
 import {Silo} from "src/base/DecodersAndSanitizers/Protocols/silo/Silo.sol";
-import {SiloIncentivesController} from "src/base/DecodersAndSanitizers/Protocols/silo/SiloIncentivesController.sol";
 import {YakMilkDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/YakMilkDecoderAndSanitizer.sol";
 import {YakStrategyDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/YakStrategyDecoderAndSanitizer.sol";
 import {YakSimpleSwapDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/YakSimpleSwapDecoderAndSanitizer.sol";
@@ -33,6 +33,7 @@ contract MilkBTCAIDecoderAndSanitizer is
     BenqiDecoderAndSanitizer,
     BlackholeDecoderAndSanitizer,
     ERC4626DecoderAndSanitizer,
+    EthenaWithdrawDecoderAndSanitizer,
     LFJLBRouterDecoderAndSanitizer,
     LFJLBHooksSimpleRewarderDecoderAndSanitizer,
     LFJLBPairDecoderAndSanitizer,
@@ -41,7 +42,6 @@ contract MilkBTCAIDecoderAndSanitizer is
     NativeWrapperDecoderAndSanitizer,
     RamsesV3DecoderAndSanitizer,
     Silo,
-    SiloIncentivesController,
     YakMilkDecoderAndSanitizer,
     YakStrategyDecoderAndSanitizer,
     YakSimpleSwapDecoderAndSanitizer

@@ -9,6 +9,7 @@ import {BlackholeDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/BlackholeDecoderAndSanitizer.sol";
 import {DeltaPrimeDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/DeltaPrimeDecoderAndSanitizer.sol";
 import {ERC4626DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/ERC4626DecoderAndSanitizer.sol";
+import {EthenaWithdrawDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/EthenaWithdrawDecoderAndSanitizer.sol";
 import {LFJLBRouterDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/LFJLBRouterDecoderAndSanitizer.sol";
 import {LFJLBHooksSimpleRewarderDecoderAndSanitizer} from
@@ -17,8 +18,8 @@ import {LFJLBPairDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/LFJLBPairDecoderAndSanitizer.sol";
 import {MasterChefDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MasterChefDecoderAndSanitizer.sol";
 import {MerklDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MerklDecoderAndSanitizer.sol";
+import {NativeWrapperDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/NativeWrapperDecoderAndSanitizer.sol";
 import {Silo} from "src/base/DecodersAndSanitizers/Protocols/silo/Silo.sol";
-import {SiloIncentivesController} from "src/base/DecodersAndSanitizers/Protocols/silo/SiloIncentivesController.sol";
 import {YakStrategyDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/YakStrategyDecoderAndSanitizer.sol";
 import {YakSimpleSwapDecoderAndSanitizer} from
@@ -32,13 +33,14 @@ contract MilkUSDAIDecoderAndSanitizer is
     BlackholeDecoderAndSanitizer,
     DeltaPrimeDecoderAndSanitizer,
     ERC4626DecoderAndSanitizer,
+    EthenaWithdrawDecoderAndSanitizer,
     LFJLBRouterDecoderAndSanitizer,
     LFJLBHooksSimpleRewarderDecoderAndSanitizer,
     LFJLBPairDecoderAndSanitizer,
     MasterChefDecoderAndSanitizer,
     MerklDecoderAndSanitizer,
+    NativeWrapperDecoderAndSanitizer,
     Silo,
-    SiloIncentivesController,
     YakStrategyDecoderAndSanitizer,
     YakSimpleSwapDecoderAndSanitizer
 {
@@ -50,10 +52,27 @@ contract MilkUSDAIDecoderAndSanitizer is
         BlackholeDecoderAndSanitizer(_blackholeNonFungiblePositionManager)
     {}
 
+    function deposit()
+        external
+        pure
+        override(
+            NativeWrapperDecoderAndSanitizer,
+            YakStrategyDecoderAndSanitizer
+        )
+        returns (bytes memory addressesFound)
+    {
+        // No addresses to sanitize
+        return addressesFound;
+    }
+
     function deposit(uint256) 
         external 
         pure 
-        override(BlackholeDecoderAndSanitizer, DeltaPrimeDecoderAndSanitizer, YakStrategyDecoderAndSanitizer)
+        override(
+            BlackholeDecoderAndSanitizer,
+            DeltaPrimeDecoderAndSanitizer,
+            YakStrategyDecoderAndSanitizer
+        )
         returns (bytes memory addressesFound)
     {
         // No addresses to sanitize
@@ -63,7 +82,11 @@ contract MilkUSDAIDecoderAndSanitizer is
     function withdraw(uint256)
         external
         pure
-        override(BlackholeDecoderAndSanitizer, YakStrategyDecoderAndSanitizer)
+        override(
+            BlackholeDecoderAndSanitizer,
+            NativeWrapperDecoderAndSanitizer,
+            YakStrategyDecoderAndSanitizer
+        )
         returns (bytes memory addressesFound)
     {
         // No addresses to sanitize
