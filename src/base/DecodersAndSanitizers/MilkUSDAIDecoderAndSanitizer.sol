@@ -4,6 +4,7 @@ pragma solidity 0.8.21;
 import {BaseDecoderAndSanitizer, DecoderCustomTypes} from "src/base/DecodersAndSanitizers/BaseDecoderAndSanitizer.sol";
 import {AaveV3DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/AaveV3DecoderAndSanitizer.sol";
 import {AvantMintingV2} from "src/base/DecodersAndSanitizers/Protocols/avant/AvantMintingV2.sol";
+import {AvantReferralRegistry} from "src/base/DecodersAndSanitizers/Protocols/avant/AvantReferralRegistry.sol";
 import {BenqiDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/BenqiDecoderAndSanitizer.sol";
 import {BlackholeDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/BlackholeDecoderAndSanitizer.sol";
@@ -29,6 +30,7 @@ contract MilkUSDAIDecoderAndSanitizer is
     BaseDecoderAndSanitizer,
     AaveV3DecoderAndSanitizer,
     AvantMintingV2,
+    AvantReferralRegistry,
     BenqiDecoderAndSanitizer,
     BlackholeDecoderAndSanitizer,
     DeltaPrimeDecoderAndSanitizer,
