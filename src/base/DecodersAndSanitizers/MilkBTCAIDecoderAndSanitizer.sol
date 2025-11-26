@@ -18,7 +18,6 @@ import {LFJLBPairDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Proto
 import {MasterChefDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MasterChefDecoderAndSanitizer.sol";
 import {MerklDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MerklDecoderAndSanitizer.sol";
 import {NativeWrapperDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/NativeWrapperDecoderAndSanitizer.sol";
-import {RamsesV3DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/RamsesV3DecoderAndSanitizer.sol";
 import {Silo} from "src/base/DecodersAndSanitizers/Protocols/silo/Silo.sol";
 import {YakMilkDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/YakMilkDecoderAndSanitizer.sol";
 import {YakStrategyDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/YakStrategyDecoderAndSanitizer.sol";
@@ -42,7 +41,6 @@ contract MilkBTCAIDecoderAndSanitizer is
     MasterChefDecoderAndSanitizer,
     MerklDecoderAndSanitizer,
     NativeWrapperDecoderAndSanitizer,
-    RamsesV3DecoderAndSanitizer,
     Silo,
     YakMilkDecoderAndSanitizer,
     YakStrategyDecoderAndSanitizer,
@@ -92,53 +90,6 @@ contract MilkBTCAIDecoderAndSanitizer is
             NativeWrapperDecoderAndSanitizer,
             YakStrategyDecoderAndSanitizer
         )
-        returns (bytes memory addressesFound)
-    {
-        // No addresses to sanitize
-        return addressesFound;
-    }
-
-    function burn(
-        uint256
-    )
-        external
-        pure
-        override(BlackholeDecoderAndSanitizer, RamsesV3DecoderAndSanitizer)
-        returns (bytes memory addressesFound)
-    {
-        // No addresses to sanitize
-        return addressesFound;
-    }
-
-    function collect(
-        DecoderCustomTypes.CollectParams calldata params
-    )
-        external
-        pure
-        override(BlackholeDecoderAndSanitizer, RamsesV3DecoderAndSanitizer)
-        returns (bytes memory addressesFound)
-    {
-        addressesFound = abi.encodePacked(params.recipient);
-    }
-
-    function increaseLiquidity(
-        DecoderCustomTypes.IncreaseLiquidityParams calldata /*params*/
-    )
-        external
-        pure
-        override(BlackholeDecoderAndSanitizer, RamsesV3DecoderAndSanitizer)
-        returns (bytes memory addressesFound)
-    {
-        // No addresses to sanitize
-        return addressesFound;
-    }
-
-    function decreaseLiquidity(
-        DecoderCustomTypes.DecreaseLiquidityParams calldata /*params*/
-    )
-        external
-        pure
-        override(BlackholeDecoderAndSanitizer, RamsesV3DecoderAndSanitizer)
         returns (bytes memory addressesFound)
     {
         // No addresses to sanitize

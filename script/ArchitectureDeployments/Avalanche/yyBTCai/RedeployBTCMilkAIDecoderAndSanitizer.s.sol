@@ -12,8 +12,6 @@ import "forge-std/Script.sol";
  * @dev Optionally can change `--with-gas-price` to something more reasonable
  */
 contract RedeployBTCMilkAIDecoderAndSanitizer is Script, AvalancheAddresses {
-    address public boringVault = 0x0FB51627a4D9E01B24C427BB62Ed8d5C9018f8F6;
-
     function setUp() external {
         vm.createSelectFork("avalanche");
     }
@@ -21,7 +19,7 @@ contract RedeployBTCMilkAIDecoderAndSanitizer is Script, AvalancheAddresses {
     function run() external {
         vm.startBroadcast();
 
-        new MilkBTCAIDecoderAndSanitizer(boringVault, blackholeNonFungiblePositionManager);
+        new MilkBTCAIDecoderAndSanitizer(aiBtcBoringVault, blackholeNonFungiblePositionManager);
 
         vm.stopBroadcast();
     }
