@@ -50,9 +50,9 @@ abstract contract RamsesV3DecoderAndSanitizer is BaseDecoderAndSanitizer {
         ) {
             revert RamsesV3DecoderAndSanitizer__BadTokenId();
         }
-        // Extract addresses from ramsesNonFungiblePositionManager.positions(params.tokenId).
-        (address token0,address token1,,,,,,,,) = ramsesNonFungiblePositionManager.positions(params.tokenId);
-        addressesFound = abi.encodePacked(token0, token1);
+
+        // Nothing to return
+        return addressesFound;
     }
 
     function decreaseLiquidity(
@@ -68,7 +68,7 @@ abstract contract RamsesV3DecoderAndSanitizer is BaseDecoderAndSanitizer {
             revert RamsesV3DecoderAndSanitizer__BadTokenId();
         }
 
-        // Nothing to sanitize or return
+        // Nothing to return
         return addressesFound;
     }
 
