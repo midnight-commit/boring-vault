@@ -21,6 +21,7 @@ contract AvalancheAddresses {
     address public blackholeNonFungiblePositionManager = 0x3fED017EC0f5517Cdf2E8a9a4156c64d74252146;
     address public ramsesV3NonFungiblePositionManager = 0x0B4478e810D48B5882D4019D435A2f864Bab4F39;
 
+    address public aiAvaxBoringVault = 0xa845Cbe370B99AdDaB67AfE442F2cF5784d4dC29;
     address public aiBtcBoringVault = 0x0FB51627a4D9E01B24C427BB62Ed8d5C9018f8F6;
     address public aiUsdBoringVault = 0xdC038cFf8E55416a5189e37F382879c19217a4CB;
 }

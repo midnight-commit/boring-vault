@@ -3,7 +3,7 @@ pragma solidity 0.8.21;
 
 import {BaseDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/BaseDecoderAndSanitizer.sol";
 
-abstract contract BenqiDecoderAndSanitizer is BaseDecoderAndSanitizer {
+abstract contract BenqiLendingDecoderAndSanitizer is BaseDecoderAndSanitizer {
     //============================== Benqi ===============================
 
     function mint(uint256 /*amount*/ )
