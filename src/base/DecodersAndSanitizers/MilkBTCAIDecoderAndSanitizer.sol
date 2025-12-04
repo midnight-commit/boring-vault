@@ -8,6 +8,7 @@ import {AesyxStabilityPool} from "src/base/DecodersAndSanitizers/Protocols/aesyx
 import {AesyxWrapper} from "src/base/DecodersAndSanitizers/Protocols/aesyx/AesyxWrapper.sol";
 import {AvantMintingV2} from "src/base/DecodersAndSanitizers/Protocols/avant/AvantMintingV2.sol";
 import {AvantReferralRegistry} from "src/base/DecodersAndSanitizers/Protocols/avant/AvantReferralRegistry.sol";
+import {BenqiLendingDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/benqi/BenqiLendingDecoderAndSanitizer.sol";
 import {BlackholeDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/BlackholeDecoderAndSanitizer.sol";
 import {ERC4626DecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/ERC4626DecoderAndSanitizer.sol";
 import {EthenaWithdrawDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/EthenaWithdrawDecoderAndSanitizer.sol";
@@ -30,6 +31,7 @@ contract MilkBTCAIDecoderAndSanitizer is
     AesyxWrapper,
     AvantMintingV2,
     AvantReferralRegistry,
+    BenqiLendingDecoderAndSanitizer,
     BlackholeDecoderAndSanitizer,
     ERC4626DecoderAndSanitizer,
     EthenaWithdrawDecoderAndSanitizer,

@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-import {BaseDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/BaseDecoderAndSanitizer.sol";
-
-abstract contract BenqiSavaxDecoderAndSanitizer is BaseDecoderAndSanitizer {
+/**
+ * @title BenqiSavaxDecoderAndSanitizer
+ * @notice This contract does not inherit from BaseDecoderAndSanitizer.
+ */
+abstract contract BenqiSavaxDecoderAndSanitizer {
     //============================== StakedAvax (sAVAX) ===============================
 
     function submit() external pure virtual returns (bytes memory addressesFound) {

@@ -8,10 +8,10 @@ import {BenqiDecoderAndSanitizer} from "../../../../src/base/DecodersAndSanitize
 import "forge-std/Script.sol";
 
 /**
- *  forge script script/ArchitectureDeployments/Avalanche/yyAVAXai/DeployAVAXMilkAIBenqiDecoderAndSanitizer.s.sol:DeployAVAXMilkAIBenqiDecoderAndSanitizer --account yak-deployer --broadcast --verifier-url 'https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan' --etherscan-api-key "verifyContract" --verify
+ *  forge script script/ArchitectureDeployments/Avalanche/DecoderAndSanitizers/DeployBenqiDecoderAndSanitizer.s.sol:DeployBenqiDecoderAndSanitizer --account yak-deployer --broadcast --verifier-url 'https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan' --etherscan-api-key "verifyContract" --verify
  * @dev Optionally can change `--with-gas-price` to something more reasonable
  */
-contract DeployAVAXMilkAIBenqiDecoderAndSanitizer is Script, AvalancheAddresses {
+contract DeployBenqiDecoderAndSanitizer is Script, AvalancheAddresses {
 
     function setUp() external {
         vm.createSelectFork("avalanche");
@@ -20,7 +20,7 @@ contract DeployAVAXMilkAIBenqiDecoderAndSanitizer is Script, AvalancheAddresses 
     function run() external {
         vm.startBroadcast();
 
-        new BenqiDecoderAndSanitizer(aiAvaxBoringVault);
+        new BenqiDecoderAndSanitizer();
 
         vm.stopBroadcast();
     }
