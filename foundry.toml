@@ -41,3 +41,7 @@ FOUNDRY_FMT_NUMBER_UNDERSCORE = "thousands"
 FOUNDRY_FMT_OVERRIDE_SPACING = true
 FOUNDRY_FMT_WRAP_COMMENTS = false
 FOUNDRY_FMT_IGNORE = []
+
+[lint]
+severity = ["high"]
+exclude_lints = ["erc20-unchecked-transfer"]

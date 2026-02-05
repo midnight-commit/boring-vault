@@ -20,6 +20,7 @@ import {LFJLBPairDecoderAndSanitizer} from
 import {MasterChefDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MasterChefDecoderAndSanitizer.sol";
 import {MerklDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/MerklDecoderAndSanitizer.sol";
 import {NativeWrapperDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/NativeWrapperDecoderAndSanitizer.sol";
+import {SparkRewardsDecoderAndSanitizer} from "src/base/DecodersAndSanitizers/Protocols/SparkRewardsDecoderAndSanitizer.sol";
 import {Silo} from "src/base/DecodersAndSanitizers/Protocols/silo/Silo.sol";
 import {YakStrategyDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/YakStrategyDecoderAndSanitizer.sol";
@@ -43,6 +44,7 @@ contract MilkUSDAIDecoderAndSanitizer is
     MerklDecoderAndSanitizer,
     NativeWrapperDecoderAndSanitizer,
     Silo,
+    SparkRewardsDecoderAndSanitizer,
     YakStrategyDecoderAndSanitizer,
     YakSimpleSwapDecoderAndSanitizer
 {
