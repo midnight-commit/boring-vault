@@ -26,6 +26,8 @@ import {YakStrategyDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/YakStrategyDecoderAndSanitizer.sol";
 import {YakSimpleSwapDecoderAndSanitizer} from
     "src/base/DecodersAndSanitizers/Protocols/YakSimpleSwapDecoderAndSanitizer.sol";
+import {YakMilkDecoderAndSanitizer} from
+    "src/base/DecodersAndSanitizers/Protocols/YakMilkDecoderAndSanitizer.sol";
 
 contract MilkUSDAIDecoderAndSanitizer is
     BaseDecoderAndSanitizer,
@@ -46,7 +48,8 @@ contract MilkUSDAIDecoderAndSanitizer is
     Silo,
     SparkRewardsDecoderAndSanitizer,
     YakStrategyDecoderAndSanitizer,
-    YakSimpleSwapDecoderAndSanitizer
+    YakSimpleSwapDecoderAndSanitizer,
+    YakMilkDecoderAndSanitizer
 {
     constructor(
         address _boringVault,
